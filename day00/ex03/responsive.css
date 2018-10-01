@@ -1,0 +1,66 @@
+tr {
+	display: flex;
+}
+td {
+	flex: 5.5%;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+.sym {
+	font-weight: bold;
+	text-align: center;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	font-size: 2vw;
+}
+.num {
+	margin-top: 0%;
+	margin-bottom: 0%;
+	text-align: left;
+	font-size: 1vw;
+}
+.mass {
+	margin-top: 0%;
+	margin-bottom: 0%;
+	text-align: right;
+	font-size: 1vw;
+}
+.blank {
+	border: 1px solid transparent;
+}
+.onm {
+	background-color: greenyellow;
+}
+.ng {
+	background-color: skyblue;
+}
+.am {
+	background-color: orange;
+}
+.aem {
+	background-color: yellow;
+}
+.moi {
+	background-color: green;
+}
+.ptm {
+	background-color: turquoise;
+}
+.tm {
+	background-color: pink;
+}
+.unt {
+	background-color: lightgrey;
+}
+.gas > .sym {
+	color: red;
+}
+.sol > .sym {
+	color: black;
+}
+.liq > .sym {
+	color: blue;
+}
+.uns > .sym {
+	color: gray;
+}
