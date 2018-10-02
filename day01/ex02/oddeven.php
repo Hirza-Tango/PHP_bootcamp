@@ -1,20 +1,20 @@
 #!/usr/bin/env php
 <?php
-	echo "Enter a number: ";
-	while (strlen($line = fgets(STDIN)))
+echo "Enter a number: ";
+while (strlen($line = fgets(STDIN)))
+{
+	$line = trim($line);
+	if (is_numeric($line))
 	{
-		$line = trim($line);
-		if (is_numeric($line))
-		{
-			echo "The number ", $line, " is ";
-			if ($line % 2)
-				echo "odd";
-			else
-				echo "even";
-		}
+		echo "The number ", $line, " is ";
+		if ($line % 2)
+			echo "odd";
 		else
-			print("'$line' is not a number");
-		echo "\nEnter a number: ";
+			echo "even";
 	}
-	echo "\n";
+	else
+		print("'$line' is not a number");
+	echo "\nEnter a number: ";
+}
+echo "\n";
 ?>
