@@ -8,7 +8,7 @@ natcasesort($a);
 foreach ($a as $e)
 	if (ctype_alpha($e[0]))
 		echo $e, "\n";
-sort($a);
+sort($a, SORT_STRING);
 foreach ($a as $e)
 	if (ctype_digit($e[0]))
 		echo $e, "\n";
