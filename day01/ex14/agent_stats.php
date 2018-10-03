@@ -6,6 +6,7 @@
 		return 1;
 	while ($line = fgetcsv($stdin, 0,';'))
 		array_push($tab, $line);
+	fclose($stdin);
 	array_shift($tab);
 	if ($argv[1] == "average")
 	{
