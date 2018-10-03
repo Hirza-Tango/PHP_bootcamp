@@ -1,8 +1,6 @@
 #!/usr/bin/env php
 <?php
 $doc = new DOMDocument();
-$doc->formatOutput = false;
-$doc->substituteEntities = false;
 $doc->loadHTMLFile($argv[1], LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 foreach ($doc->getElementsByTagName('a') as $tag)
 {
