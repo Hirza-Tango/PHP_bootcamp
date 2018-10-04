@@ -9,9 +9,7 @@ function getFirstTimestamp (array $a, array $b){
 	return getUnixTime($a["times"][0]) - getUnixTime($b["times"][0]);
 }
 
-if ($argc != 2)
-	return;
-if (!(file_exists($argv[1])))
+if ($argc != 2 || !(file_exists($argv[1])))
 	return;
 $srt = file_get_contents($argv[1]);
 foreach (explode("\n\n", trim($srt)) as $line)
