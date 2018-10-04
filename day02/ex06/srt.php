@@ -25,5 +25,9 @@ foreach (explode("\n\n", trim($srt)) as $line)
 }
 usort($arr, getFirstTimestamp);
 foreach ($arr as $i=>$e)
-	echo ($i+1).PHP_EOL.$e["times"][0]." --> ".$e["times"][1].PHP_EOL.$e["text"].PHP_EOL.PHP_EOL;
+{
+	echo ($i+1).PHP_EOL.$e["times"][0]." --> ".$e["times"][1].PHP_EOL.$e["text"].PHP_EOL;
+	if ($arr[$i + 1])
+		echo PHP_EOL;
+}
 ?>
