@@ -6,14 +6,13 @@ if (!(file_exists($argv[1])))
 	return;
 $file = fopen($argv[1], 'r');
 $headers = fgetcsv($file, 0,';');
-while ($line = fgetcsv($file, 0,';'))
-	$tab[] = $line;
+while ($tab[] = fgetcsv($file, 0,';'));
 fclose($file);
 if (($index = array_search($argv[2], $headers)) === false)
 	return;
-for ($i = 0; $headers[$i]; $i++)
+foreach ($headers as $i=>$h)
 	foreach ($tab as $e)
-		${$headers[$i]}[$e[$index]] = $e[$i];
+		$$h[$e[$index]] = $e[$i];
 $stdin = fopen("php://stdin", 'r');
 echo "Enter your command: ";
 while ($command = fgets($stdin))

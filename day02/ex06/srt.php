@@ -18,8 +18,7 @@ foreach (explode("\n\n", trim($srt)) as $line)
 {
 	$a = explode("\n", $line);
 	$number = intval(each($a)['value']);
-	$times = explode(" --> ", each($a)['value']);
-	reset($a);
+	$times = explode(" --> ", current($a));
 	$text = implode("\n", array_slice($a, 2));
 	$arr[$number - 1] = array("times"=>$times, "text"=>$text);
 }
