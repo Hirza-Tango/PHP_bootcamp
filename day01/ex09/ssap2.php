@@ -3,7 +3,7 @@
 $a = [];
 unset($argv[0]);
 foreach ($argv as $e)
-	$a = array_merge($a, explode(" ", $e));
+	$a = array_merge($a, array_filter(explode(" ", $e)));
 natcasesort($a);
 foreach ($a as $e)
 	if (ctype_alpha($e[0]))
