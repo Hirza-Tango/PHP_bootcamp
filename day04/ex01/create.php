@@ -19,6 +19,6 @@
 		}
 	$arr[] = Array('login'=>$_POST['login'], 'passwd'=>hash("sha512", $_POST['passwd']));
 	file_put_contents("../private/passwd", serialize($arr));
-	echo "OKa\n";
+	echo "OK\n";
 	return;
 ?>
