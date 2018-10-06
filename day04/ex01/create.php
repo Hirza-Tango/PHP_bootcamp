@@ -1,16 +1,16 @@
 <?php
-	if ($_POST['submit'] !== "OK" || !$_POST['passwd'] || !$_POST['login'])
+	if ($_POST['submit'] !== "OK" || !$_POST['passwd'] || !$_POST['login']) 
 	{
 		echo "ERROR\n";
 		return;
 	}
-	if (!file_exists("/private/passwd"))
+	if (!file_exists("../private/passwd"))
 	{
-		@mkdir("/private");
+		@mkdir("../private");
 		$arr = [];
 	}
 	else
-		$arr = unserialize(file_get_contents("/private/passwd"));
+		$arr = unserialize(file_get_contents("../private/passwd"));
 	foreach ($arr as $e)
 		if ($e['login'] === $_POST['login'])
 		{
@@ -18,8 +18,7 @@
 			return;
 		}
 	$arr[] = Array('login'=>$_POST['login'], 'passwd'=>hash("sha512", $_POST['passwd']));
-	echo String(file_put_contents("/private/passwd", serialize($arr)));
-	print_r($arr);
+	file_put_contents("../private/passwd", serialize($arr));
 	echo "OK\n";
 	return;
 ?>
