@@ -6,7 +6,7 @@
 	}
 	if (!file_exists("../private/passwd"))
 	{
-		@mkdir("..private");
+		@mkdir("../private");
 		$arr = [];
 	}
 	else
