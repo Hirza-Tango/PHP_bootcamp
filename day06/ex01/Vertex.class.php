@@ -40,15 +40,15 @@ Class Vertex {
 	static function doc(){
 		return file_get_contents("Vertex.doc.txt");
 	}
-	public function & __get($name){
-		if (isset($this->$$name))
-			return ($this->$$name);
+	public function & get($name){
+		if (isset($this->${"_".$name}))
+			return ($this->${"_".$name});
 		else
 			throw new NotFoundException();
 	}
-	public function __set($name, $value){
-		if (isset($this->$$name))
-			$this->$$name = $value;
+	public function set($name, $value){
+		if (isset($this->${"_".$name}))
+			$this->${"_".$name} = $value;
 		else
 			throw new NotFoundException();
 	}

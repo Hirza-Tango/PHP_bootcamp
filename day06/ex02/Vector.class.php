@@ -1,7 +1,7 @@
 <?php
 require_once 'Vertex.class.php';
 
-class Vertex{
+class Vector{
 
 	private $_x;
 	private $_y;
@@ -9,16 +9,15 @@ class Vertex{
 	private $_w;
 	static $verbose = false;
 	public function __construct(array $arr){
-		//TODO: fix this
 		if ($arr['orig'] instanceof Vertex)
 			$_w = $arr['orig'];
 		else
 			$_w = new Vertex(array("x"=>0, "y"=>0, "z"=>0, "w"=>1));
 		if ($arr['dest'] instanceof Vertex)
 		{
-			$_x = $arr['dest']->__get($_x) - $arr['orig']->__get($_x);
-			$_y = $arr['dest']->__get($_y) - $arr['orig']->__get($_y);
-			$_z = $arr['dest']->__get($_z) - $arr['orig']->__get($_z);
+			$_x = $arr['dest']->get("x") - $arr['orig']->get("x");
+			$_y = $arr['dest']->get("y") - $arr['orig']->get("y");
+			$_z = $arr['dest']->get("z") - $arr['orig']->get("z");
 		}
 		else
 			throw new NotFoundException();
@@ -36,9 +35,9 @@ class Vertex{
 	static function doc(){
 		return file_get_contents("Vector.doc.txt");
 	}
-	public function __get($name){
-		if (isset($this->$$name))
-			return ($this->$$name);
+	public function get($name){
+		if (isset($this->${"_".$name}))
+			return ($this->${"_".$name});
 		else
 			throw new NotFoundException();
 	}
@@ -49,12 +48,32 @@ class Vertex{
 		return sqrt($_x**2 + $_y**2 + $_z**2);
 	}
 	public function normalize(){
-		$norm = $this->magnitude();
-		return new Vector(array("orig"=>$this->_w, "dest"=> new Vertex(array(
-			"x"=>$this->_x/$norm, "y"=>$this->_y/$norm, "z"=>$this->_z/$norm))));
+		return $this->scalarProduct(1/$this->magnitude());
 	}
-	public function add(Vector $rhs){
+	public function add( Vector $rhs ){
 		return new Vector(array("orig"=>$this->_w, "dest"=> new Vertex(array(
-			"x"=>$this->_x+$rhs->_x, "y"=>$this->_y/$rhs->_y, "z"=>$this->_z/$rhs->_z))));
+			"x"=>$this->_x+$rhs->_x, "y"=>$this->_y+$rhs->_y, "z"=>$this->_z+$rhs->_z))));
+	}
+	public function sub( Vector $rhs ){
+		return new Vector(array("orig"=>$this->_w, "dest"=> new Vertex(array(
+			"x"=>$this->_x-$rhs->_x, "y"=>$this->_y-$rhs->_y, "z"=>$this->_z-$rhs->_z))));
+	}
+	public function opposite(){
+		return new Vector(array("orig"=>$this->_w, "dest"=> new Vertex(array(
+			"x"=>-$this->_x, "y"=>-$this->_y, "z"=>-$this->_z))));
+	}
+	public function scalarProduct( $k ){
+		return new Vector(array("orig"=>$this->_w, "dest"=> new Vertex(array(
+			"x"=>$this->_x*$k, "y"=>$this->_y*$k, "z"=>$this->_z*$k))));
+	}
+	public function dotProduct( Vector $rhs ){
+		return ($this->_x*$rhs->_x + $this->_y*$rhs->_y + $this->_z*$rhs->_z);
+	}
+	public function cos( Vector $rhs ){
+		return $this->dotProduct( $rhs ) / ($this->magnitude() * $rhs->magnitude());
+	}
+	public function crossProduct( Vector $rhs ){
+		return new Vector(array("orig"=>$this->_w, "dest"=> new Vertex(array(
+			"x"=>$this->_x*$rhs->_x, "y"=>$this->_y*$rhs->_y, "z"=>$this->_z*$rhs->_z))));
 	}
 }

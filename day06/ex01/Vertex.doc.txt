@@ -15,6 +15,6 @@ array( 'red' => 205, 'green' => 125, 'blue' => 80 )));
 
 x, y, z and w values are represented as doubles.
 
-This class provides the __get() and __set() assessors for x, y, z, w and color,
-where the value of __get() is passed by reference.
+This class provides the get($name) and set($name, $value) assessors for x, y, z, w and color,
+where the value of get() is passed by reference.
 ---------------------------------------------------------------------- Vertex ->

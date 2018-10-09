@@ -10,7 +10,7 @@ Examples:
 new Vector(Array("dest"=>$dest);
 new Vector(Array("dest"=>$dest, "orig"=>$orig);
 
-This class provides the __get() assessor for dest and orig, passed by value.
+This class provides the get() assessor for dest and orig, passed by value.
 The instance is never modified once instatiated.
 
 The class provides the following methods:
