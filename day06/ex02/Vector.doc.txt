@@ -1,0 +1,16 @@
+
+<- Vector ----------------------------------------------------------------------
+The Vector class handles a right-hand mark representation of a vector.
+
+An instance can be constructed from an array of:
+The destination vertex,
+an optional origin vertex, which defaults to (x = 0, y = 0, z = 0, w = 1).
+
+Examples:
+new Vector(Array("dest"=>$dest);
+new Vector(Array("dest"=>$dest, "orig"=>$orig);
+
+This class provides the __get() assessor for dest and orig, passed by value.
+
+//stuff about methods blah blah blah
+---------------------------------------------------------------------- Vector ->

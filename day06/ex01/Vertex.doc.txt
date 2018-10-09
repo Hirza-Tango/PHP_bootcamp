@@ -1,0 +1,20 @@
+
+<- Vertex ----------------------------------------------------------------------
+The Vertex class handles a vertex representation of a point in space.
+
+An instance can be constructed from an array of:
+x, y and z coordinate values,
+an optional w coordinate transformer which defaults to 1.0,
+and an optional color which defaults to white.
+
+Examples:
+new Vertex(array( 'x' => 1.0 , 'y' => 2.3 , 'z' => -1.5 ));
+new Vertex(array( 'x' => 1.0 , 'y' => 2.3 , 'z' => -1.5 , 'w' => 3.0));
+new Vertex(array( 'x' => 1.0 , 'y' => 2.3 , 'z' => -1.5 , 'w' => 3.0 ,
+array( 'red' => 205, 'green' => 125, 'blue' => 80 )));
+
+x, y, z and w values are represented as doubles.
+
+This class provides the __get() and __set() assessors for x, y, z, w and color,
+where the value of __get() is passed by reference.
+---------------------------------------------------------------------- Vertex ->
