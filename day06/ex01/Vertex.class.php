@@ -19,7 +19,7 @@ Class Vertex {
 			throw new NotFoundException();
 		if (isset($arr['w']))
 			$this->_w = doubleval($arr['w']);
-		if (isset($arr['color']))
+		if (isset($arr['color']) && $arr['color'] instanceof Color)
 			$this->_color = $arr['color'];
 		else
 			$this->_color = new Color(array("rgb"=>0xFFFFFF));
