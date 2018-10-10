@@ -6,18 +6,18 @@ class Vector{
 	private $_x;
 	private $_y;
 	private $_z;
-	private $_w;
+	private $_w = 0.0;
 	static $verbose = false;
 	public function __construct(array $arr){
 		if ($arr['orig'] instanceof Vertex)
-			$_w = $arr['orig'];
+			$o = $arr['orig'];
 		else
-			$_w = new Vertex(array("x"=>0, "y"=>0, "z"=>0, "w"=>1));
+			$o = new Vertex(array("x"=>0, "y"=>0, "z"=>0, "w"=>1));
 		if ($arr['dest'] instanceof Vertex)
 		{
-			$_x = $arr['dest']->get("x") - $arr['orig']->get("x");
-			$_y = $arr['dest']->get("y") - $arr['orig']->get("y");
-			$_z = $arr['dest']->get("z") - $arr['orig']->get("z");
+			$this->_x = $arr['dest']->get("x") - $o->get("x");
+			$this->_y = $arr['dest']->get("y") - $o->get("y");
+			$this->_z = $arr['dest']->get("z") - $o->get("z");
 		}
 		else
 			throw new NotFoundException();
@@ -29,15 +29,15 @@ class Vector{
 			echo $this->__tostring(), " destructed\n";
 	}
 	public function __tostring(){
-		return sprintf("Vertex( x: %.2f, y: %.2f, z:%.2f, w:%.2f )",
+		return sprintf("Vector( x:%.2f, y:%.2f, z:%.2f, w:%.2f )",
 			$this->_x, $this->_y, $this->_z, $this->_w);
 	}
 	static function doc(){
 		return file_get_contents("Vector.doc.txt");
 	}
 	public function get($name){
-		if (isset($this->${"_".$name}))
-			return ($this->${"_".$name});
+		if (isset($this->{"_".$name}))
+			return ($this->{"_".$name});
 		else
 			throw new NotFoundException();
 	}
@@ -45,7 +45,7 @@ class Vector{
 		throw new NotFoundException();
 	}
 	public function magnitude(){
-		return sqrt($_x**2 + $_y**2 + $_z**2);
+		return sqrt($this->_x**2 + $this->_y**2 + $this->_z**2);
 	}
 	public function normalize(){
 		return $this->scalarProduct(1/$this->magnitude());
@@ -74,6 +74,9 @@ class Vector{
 	}
 	public function crossProduct( Vector $rhs ){
 		return new Vector(array("orig"=>$this->_w, "dest"=> new Vertex(array(
-			"x"=>$this->_x*$rhs->_x, "y"=>$this->_y*$rhs->_y, "z"=>$this->_z*$rhs->_z))));
+			"x"=>$this->_y*$rhs->_z - $this->_z*$rhs->_y,
+			"y"=>$this->_z*$rhs->_x - $this->_x*$rhs->_z,
+			"z"=>$this->_x*$rhs->_y - $this->_y*$rhs->_x
+		))));
 	}
 }

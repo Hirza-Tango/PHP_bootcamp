@@ -41,14 +41,14 @@ Class Vertex {
 		return file_get_contents("Vertex.doc.txt");
 	}
 	public function & get($name){
-		if (isset($this->${"_".$name}))
-			return ($this->${"_".$name});
+		if (isset($this->{"_".$name}))
+			return $this->{"_".$name};
 		else
 			throw new NotFoundException();
 	}
 	public function set($name, $value){
-		if (isset($this->${"_".$name}))
-			$this->${"_".$name} = $value;
+		if (isset($this->{"_".$name}))
+			$this->{"_".$name} = $value;
 		else
 			throw new NotFoundException();
 	}
