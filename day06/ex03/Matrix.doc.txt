@@ -1,5 +1,5 @@
 
-<- Vector ----------------------------------------------------------------------
+<- Matrix ----------------------------------------------------------------------
 The Vector class handles a right-hand mark representation of a vector.
 
 An instance can be constructed from an array of:
@@ -10,7 +10,7 @@ Examples:
 new Vector(Array("dest"=>$dest);
 new Vector(Array("dest"=>$dest, "orig"=>$orig);
 
-This class provides the get($value) assessor, passed by value.
+This class provides the get() assessor for dest and orig, passed by value.
 The instance is never modified once instatiated.
 
 The class provides the following methods:
@@ -42,4 +42,4 @@ Returns the angle’sAppendix cosine between both vectors.
 
 Vector	crossProduct( Vector $rhs );
 Returns the cross multiplication of both vectors, using right-hand mark.
----------------------------------------------------------------------- Vector ->
+---------------------------------------------------------------------- Matrix ->

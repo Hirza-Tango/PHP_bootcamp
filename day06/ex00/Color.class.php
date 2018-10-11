@@ -43,3 +43,4 @@ class Color {
 		return file_get_contents("Color.doc.txt");
 	}
 }
+?>
